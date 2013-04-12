@@ -62,7 +62,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>.\GeneratedFiles;C:\Qt\Qt5.0.1\5.0.1\msvc2010\include;C:\Qt\Qt5.0.1\5.0.1\msvc2010\include\QtCore;C:\Qt\Qt5.0.1\5.0.1\msvc2010\include\QtGui;C:\Qt\Qt5.0.1\5.0.1\msvc2010\include\QtWidgets;.\GeneratedFiles\$(Configuration);.\;C:\Users\jbowes\Desktop\qtcamerastuff\EDSDK-2.11-Windows\EDSDK\Header;..\QCameraInterface;C:\Documents and Settings\jbowes\My Documents\Visual Studio 2008\Projects\lcms-1.19\include;..\DcRawQT;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NOMINMAX;UNICODE;WIN32;QT_LARGEFILE_SUPPORT;QT_THREAD_SUPPORT;QT_CORE_LIB;QT_GUI_LIB;QCANONCAMERA_LIB;NO_JPEG;DGJPP;USE_CIMG;NO_LCMS;HAVEWINSOCK;QT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;UNICODE;WIN32;QT_LARGEFILE_SUPPORT;QT_THREAD_SUPPORT;QT_CORE_LIB;QT_GUI_LIB;QCANONCAMERA_LIB;NO_JPEG;DGJPP;USE_CIMG;NO_LCMS;HAVEWINSOCK;QT_DLL;NODEPS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -70,7 +70,7 @@
     <Link>
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;EDSDK.lib;QCameraInterface.lib;DcRawQT.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)\$(ProjectName).dll</OutputFile>
-      <AdditionalLibraryDirectories>C:\Qt\Qt5.0.1\5.0.1\msvc2010\lib;..\EDSDK-2.11-Windows\EDSDK\Library;C:\Users\jbowes\Documents\GitHub\QCameraInterface\Debug;$(OutDir);C:\Users\jbowes\Documents\GitHub\DcRawQT\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Qt\Qt5.0.1\5.0.1\msvc2010\lib;C:\Users\jbowes\Desktop\qtcamerastuff\EDSDK-2.11-Windows\EDSDK\Library;C:\Users\jbowes\Documents\GitHub\QCameraInterface\Debug;$(OutDir);C:\Users\jbowes\Documents\GitHub\DcRawQT\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
     </Link>

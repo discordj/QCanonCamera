@@ -278,7 +278,7 @@ QCameraProperties *QCanonCamera::getallproperties()
 		err = EdsGetPropertyData(*_camera, kEdsPropID_WhiteBalance, 0 , dataSize, ivalue); //gets current
 	}
 
-	camProp->setCurrentValue(QVariant((int)*value));
+	camProp->setCurrentValue(QVariant((int)*ivalue));
 
 	err = EdsGetPropertyDesc(*_camera, kEdsPropID_WhiteBalance, propDesc); //gets available WhiteBalance
 	if(err == EDS_ERR_OK)
@@ -287,7 +287,7 @@ QCameraProperties *QCanonCamera::getallproperties()
 		{
 			camProp->appendValue(_whitebalanceTable.value(propDesc->propDesc[i]), propDesc->propDesc[i]);
 		}
-		props->addProperty(QCameraProperties::WhiteBalance,camProp);
+		props->addProperty(QCameraProperties::WhiteBalanceMode,camProp);
 	}
 
 	return props;
@@ -325,8 +325,16 @@ void QCanonCamera::setCameraProperty(QCameraProperties::QCameraPropertyTypes pro
 			}
 			break;
 		case QCameraProperties::ExposureTimes:
+			{
 			EdsUInt32 tvValue = value.toUInt();
 			err = EdsSetPropertyData(*_camera, kEdsPropID_Tv, 0 , sizeof(tvValue), &tvValue);
+			}
+			break;
+		case QCameraProperties::WhiteBalanceMode:
+			{
+			EdsUInt32 wbValue = value.toUInt();
+			err = EdsSetPropertyData(*_camera, kEdsPropID_WhiteBalance, 0 , sizeof(wbValue), &wbValue);
+			}
 			break;
 	}
 }
@@ -405,7 +413,12 @@ void QCanonCamera::capture(int seconds)
 	}
 	else
 	{
+		if(	_liveViewReady){
+			endLiveView();
+		}
+
 		err =  EdsSendCommand( *_camera, kEdsCameraCommand_TakePicture, 0 );
+
 	}
 }
 
@@ -520,6 +533,18 @@ QPixmap *QCanonCamera::getLiveViewImage()
 	}
 	return pix;
 }
+
+void QCanonCamera::toggleLiveView(bool onoff){
+	if(onoff){
+		initializeLiveView();
+		_liveViewReady = true;
+	}
+	else{
+		endLiveView();
+		_liveViewReady = false;
+	}
+}
+
 
 void QCanonCamera::initializeLiveView()
 {
@@ -637,6 +662,11 @@ void QCanonCamera::downloadImage(EdsDirectoryItemRef directoryItem)
 
 
 	emit image_captured(image);
+
+	if(_liveViewReady){
+		initializeLiveView();
+	}
+
 
 //	return err;
 }

@@ -34,7 +34,7 @@ public:
 	void setImageDirectory(QString dir){_imagedestdir = dir;}
 	void setImageFilePrefix(QString imagenameprefix){_nameprefix = imagenameprefix;}
 
-	void toggleLiveView(bool onoff){}
+	void toggleLiveView(bool onoff);
 	
 	int batteryLevel();
 
